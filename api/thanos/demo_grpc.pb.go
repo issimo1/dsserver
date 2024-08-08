@@ -16,7 +16,7 @@ import (
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
 // Requires gRPC-Go v1.64.0 or later.
-const _ = grpc.SupportPackageIsVersion9
+const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Demo_CreateDemo_FullMethodName = "/api.thanos.Demo/CreateDemo"
@@ -48,9 +48,9 @@ func NewDemoClient(cc grpc.ClientConnInterface) DemoClient {
 }
 
 func (c *demoClient) CreateDemo(ctx context.Context, in *CreateDemoRequest, opts ...grpc.CallOption) (*CreateDemoReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	//cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(CreateDemoReply)
-	err := c.cc.Invoke(ctx, Demo_CreateDemo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Demo_CreateDemo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,9 +58,9 @@ func (c *demoClient) CreateDemo(ctx context.Context, in *CreateDemoRequest, opts
 }
 
 func (c *demoClient) UpdateDemo(ctx context.Context, in *UpdateDemoRequest, opts ...grpc.CallOption) (*UpdateDemoReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	//cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(UpdateDemoReply)
-	err := c.cc.Invoke(ctx, Demo_UpdateDemo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Demo_UpdateDemo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,9 +68,9 @@ func (c *demoClient) UpdateDemo(ctx context.Context, in *UpdateDemoRequest, opts
 }
 
 func (c *demoClient) DeleteDemo(ctx context.Context, in *DeleteDemoRequest, opts ...grpc.CallOption) (*DeleteDemoReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	//cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(DeleteDemoReply)
-	err := c.cc.Invoke(ctx, Demo_DeleteDemo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Demo_DeleteDemo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,9 +78,9 @@ func (c *demoClient) DeleteDemo(ctx context.Context, in *DeleteDemoRequest, opts
 }
 
 func (c *demoClient) GetDemo(ctx context.Context, in *GetDemoRequest, opts ...grpc.CallOption) (*GetDemoReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	//cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(GetDemoReply)
-	err := c.cc.Invoke(ctx, Demo_GetDemo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Demo_GetDemo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,9 +88,9 @@ func (c *demoClient) GetDemo(ctx context.Context, in *GetDemoRequest, opts ...gr
 }
 
 func (c *demoClient) ListDemo(ctx context.Context, in *ListDemoRequest, opts ...grpc.CallOption) (*ListDemoReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	//cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(ListDemoReply)
-	err := c.cc.Invoke(ctx, Demo_ListDemo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Demo_ListDemo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,9 +98,9 @@ func (c *demoClient) ListDemo(ctx context.Context, in *ListDemoRequest, opts ...
 }
 
 func (c *demoClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	//cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, Demo_SayHello_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Demo_SayHello_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
