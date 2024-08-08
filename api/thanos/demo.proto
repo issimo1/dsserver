@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package api.thanos;
+
+import "google/api/annotations.proto";
+
+option go_package = "hello/api/thanos;thanos";
+option java_multiple_files = true;
+option java_package = "api.thanos";
+
+service Demo {
+	rpc CreateDemo (CreateDemoRequest) returns (CreateDemoReply);
+	rpc UpdateDemo (UpdateDemoRequest) returns (UpdateDemoReply);
+	rpc DeleteDemo (DeleteDemoRequest) returns (DeleteDemoReply);
+	rpc GetDemo (GetDemoRequest) returns (GetDemoReply);
+	rpc ListDemo (ListDemoRequest) returns (ListDemoReply);
+	rpc SayHello (HelloRequest) returns (HelloReply) {
+	  option (google.api.http) = {
+	    get: "/demo/{name}"
+	  };
+	}
+}
+
+message HelloRequest {
+	string name = 1;
+}
+
+message HelloReply {
+	string message =1;
+}
+
+
+message CreateDemoRequest {}
+message CreateDemoReply {}
+
+message UpdateDemoRequest {}
+message UpdateDemoReply {}
+
+message DeleteDemoRequest {}
+message DeleteDemoReply {}
+
+message GetDemoRequest {}
+message GetDemoReply {}
+
+message ListDemoRequest {}
+message ListDemoReply {}
