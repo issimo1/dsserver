@@ -4,7 +4,7 @@ import (
 	"flag"
 	"os"
 
-	"github.com/issimo1/hello/internal/conf"
+	"github.com/issimo1/dsserver/internal/conf"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/config"

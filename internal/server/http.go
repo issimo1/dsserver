@@ -2,9 +2,9 @@ package server
 
 import (
 	//v1 "hello/api/helloworld/v1"
-	"github.com/issimo1/hello/api/thanos"
-	"github.com/issimo1/hello/internal/conf"
-	"github.com/issimo1/hello/internal/service"
+	"github.com/issimo1/dsserver/api/thanos"
+	"github.com/issimo1/dsserver/internal/conf"
+	"github.com/issimo1/dsserver/internal/service"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"

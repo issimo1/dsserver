@@ -1,4 +1,4 @@
-module github.com/issimo1/hello
+module github.com/issimo1/dsserver
 
 go 1.19
 

@@ -2,9 +2,9 @@ package service
 
 import (
 	"context"
-	"github.com/issimo1/hello/internal/biz"
+	"github.com/issimo1/dsserver/internal/biz"
 
-	pb "github.com/issimo1/hello/api/thanos"
+	pb "github.com/issimo1/dsserver/api/thanos"
 )
 
 type DemoService struct {
