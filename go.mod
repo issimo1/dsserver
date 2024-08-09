@@ -1,4 +1,4 @@
-module hello
+module github.com/issimo1/hello
 
 go 1.19
 

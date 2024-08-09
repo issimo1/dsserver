@@ -16,7 +16,7 @@ import (
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
 // Requires gRPC-Go v1.64.0 or later.
-const _ = grpc.SupportPackageIsVersion9
+const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Demo_CreateDemo_FullMethodName = "/api.thanos.Demo/CreateDemo"
@@ -58,7 +58,7 @@ func (c *demoClient) CreateDemo(ctx context.Context, in *CreateDemoRequest, opts
 }
 
 func (c *demoClient) UpdateDemo(ctx context.Context, in *UpdateDemoRequest, opts ...grpc.CallOption) (*UpdateDemoReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(UpdateDemoReply)
 	err := c.cc.Invoke(ctx, Demo_UpdateDemo_FullMethodName, in, out, cOpts...)
 	if err != nil {
