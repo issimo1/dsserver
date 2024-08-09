@@ -58,11 +58,6 @@ func (c *demoClient) CreateDemo(ctx context.Context, in *CreateDemoRequest, opts
 }
 
 func (c *demoClient) UpdateDemo(ctx context.Context, in *UpdateDemoRequest, opts ...grpc.CallOption) (*UpdateDemoReply, error) {
-<<<<<<< HEAD
-	cOpts := append([]grpc.CallOption{}, opts...)
-=======
-	//cOpts := append([]grpc.CallOption{}, opts...)
->>>>>>> 915e76f791021c56caa435b28e8046dc952777d4
 	out := new(UpdateDemoReply)
 	err := c.cc.Invoke(ctx, Demo_UpdateDemo_FullMethodName, in, out, opts...)
 	if err != nil {
