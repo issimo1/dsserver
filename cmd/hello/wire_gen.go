@@ -9,11 +9,11 @@ package main
 import (
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
-	"hello/internal/biz"
-	"hello/internal/conf"
-	"hello/internal/data"
-	"hello/internal/server"
-	"hello/internal/service"
+	"github.com/issimo1/hello/internal/biz"
+	"github.com/issimo1/hello/internal/conf"
+	"github.com/issimo1/hello/internal/data"
+	"github.com/issimo1/hello/internal/server"
+	"github.com/issimo1/hello/internal/service"
 )
 
 import (
