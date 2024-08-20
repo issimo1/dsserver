@@ -39,5 +39,7 @@ func (s *DemoService) SayHello(ctx context.Context, req *pb.HelloRequest) (*pb.H
 	if err != nil {
 		return nil, err
 	}
-	return &pb.HelloReply{Message: "Hello" + g.Hello}, nil
+	return &pb.HelloReply{
+		Message: "Hello " + g.Hello,
+	}, nil
 }

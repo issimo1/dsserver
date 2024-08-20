@@ -2,6 +2,7 @@ package data
 
 import (
 	"context"
+	"github.com/go-redis/redis/v8"
 
 	"github.com/issimo1/dsserver/internal/biz"
 
@@ -22,6 +23,14 @@ func NewGreeterRepo(data *Data, logger log.Logger) biz.GreeterRepo {
 }
 
 func (r *greeterRepo) Save(ctx context.Context, g *biz.Greeter) (*biz.Greeter, error) {
+	save := r.data.redis.Get(ctx, g.Hello)
+	rv, err := save.Int64()
+	if err == redis.Nil {
+		return &biz.Greeter{
+			Hello: "Error",
+		}, nil
+	}
+	g.Id = rv
 	return g, nil
 }
 

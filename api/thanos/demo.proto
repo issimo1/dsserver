@@ -16,7 +16,7 @@ service Demo {
 	rpc ListDemo (ListDemoRequest) returns (ListDemoReply);
 	rpc SayHello (HelloRequest) returns (HelloReply) {
 	  option (google.api.http) = {
-	    get: "/demo/{name}"
+	    get: "/thanos/{name}"
 	  };
 	}
 }

@@ -27,7 +27,7 @@ type DemoHTTPServer interface {
 
 func RegisterDemoHTTPServer(s *http.Server, srv DemoHTTPServer) {
 	r := s.Route("/")
-	r.GET("/demo/{name}", _Demo_SayHello0_HTTP_Handler(srv))
+	r.GET("/thanos/{name}", _Demo_SayHello0_HTTP_Handler(srv))
 }
 
 func _Demo_SayHello0_HTTP_Handler(srv DemoHTTPServer) func(ctx http.Context) error {
@@ -66,7 +66,7 @@ func NewDemoHTTPClient(client *http.Client) DemoHTTPClient {
 
 func (c *DemoHTTPClientImpl) SayHello(ctx context.Context, in *HelloRequest, opts ...http.CallOption) (*HelloReply, error) {
 	var out HelloReply
-	pattern := "/demo/{name}"
+	pattern := "/thanos/{name}"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationDemoSayHello))
 	opts = append(opts, http.PathTemplate(pattern))
