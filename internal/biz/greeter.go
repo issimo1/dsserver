@@ -22,11 +22,16 @@ type Greeter struct {
 
 // GreeterRepo is a Greater repo.
 type GreeterRepo interface {
+
+	//db
 	Save(context.Context, *Greeter) (*Greeter, error)
 	Update(context.Context, *Greeter) (*Greeter, error)
 	FindByID(context.Context, int64) (*Greeter, error)
 	ListByHello(context.Context, string) ([]*Greeter, error)
 	ListAll(context.Context) ([]*Greeter, error)
+
+	//redis
+	GetHelloLike(context.Context, string) (int64, error)
 }
 
 // GreeterUsecase is a Greeter usecase.
