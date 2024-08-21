@@ -25,10 +25,10 @@ type ArticleUseCase struct {
 	log  *log.Helper
 }
 
-func NewArticleUsecase(poll ArticleRepo, log *log.Helper) *ArticleUseCase {
+func NewArticleUsecase(poll ArticleRepo, logger log.Logger) *ArticleUseCase {
 	return &ArticleUseCase{
 		poll: poll,
-		log:  log,
+		log:  log.NewHelper(logger),
 	}
 }
 
