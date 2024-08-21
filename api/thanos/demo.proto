@@ -57,9 +57,17 @@ message CreateDemoRequest {
 	int64 id = 1;
 	string content = 2;
 	string comment = 3;
+	string title = 4;
+	string name = 5;
+	string comm_content = 6;
 }
 message CreateDemoReply {
-	bool ok = 1;
+	message Article{
+		int64 id = 1;
+		string content = 2;
+		string comment = 3;
+	}
+	repeated Article results = 1;
 }
 
 message UpdateDemoRequest {
@@ -68,14 +76,24 @@ message UpdateDemoRequest {
 	string comment = 3;
 }
 message UpdateDemoReply {
-	bool ok = 1;
+	message Article{
+		int64 id = 1;
+		string content = 2;
+		string comment = 3;
+	}
+	repeated Article results = 1;
 }
 
 message DeleteDemoRequest {
 	int64 id = 1;
 }
 message DeleteDemoReply {
-	bool ok = 1;
+	message Article{
+		int64 id = 1;
+		string content = 2;
+		string comment = 3;
+	}
+	repeated Article results = 1;
 }
 
 message GetDemoRequest {
@@ -93,7 +111,10 @@ message ListDemoRequest {
 	int64 id = 1;
 }
 message ListDemoReply {
-	int64 id = 1;
-	string content = 2;
-	string comment = 3;
+	message Article{
+		int64 id = 1;
+		string content = 2;
+		string comment = 3;
+	}
+	repeated Article results = 1;
 }
