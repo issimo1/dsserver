@@ -6,11 +6,11 @@
 package main
 
 import (
-	"hello/internal/biz"
-	"hello/internal/conf"
-	"hello/internal/data"
-	"hello/internal/server"
-	"hello/internal/service"
+	"github.com/issimo1/dsserver/internal/biz"
+	"github.com/issimo1/dsserver/internal/conf"
+	"github.com/issimo1/dsserver/internal/data"
+	"github.com/issimo1/dsserver/internal/server"
+	"github.com/issimo1/dsserver/internal/service"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"

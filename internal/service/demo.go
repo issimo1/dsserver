@@ -14,9 +14,10 @@ type DemoService struct {
 	uc *biz.GreeterUsecase
 }
 
-func NewDemoService(uc *biz.GreeterUsecase) *DemoService {
+func NewDemoService(uc *biz.GreeterUsecase, ac *biz.ArticleUseCase) *DemoService {
 	return &DemoService{
 		uc: uc,
+		ac: ac,
 	}
 }
 
