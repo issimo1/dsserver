@@ -22,33 +22,40 @@ func NewDemoService(uc *biz.GreeterUsecase, ac *biz.ArticleUseCase) *DemoService
 }
 
 func (s *DemoService) CreateDemo(ctx context.Context, req *pb.CreateDemoRequest) (*pb.CreateDemoReply, error) {
-	_, err := s.ac.CreateArticle(ctx, biz.Article{
+	cdr := biz.Article{
 		ID:      req.Id,
-		Comment: req.Comment,
+		Title:   req.Comment,
 		Content: req.Content,
-	})
+	}
+	_, err := s.ac.CreateArticle(ctx, cdr)
 	if err != nil {
-		return &pb.CreateDemoReply{
-			Ok: false,
-		}, err
+		return nil, err
 	}
 	return &pb.CreateDemoReply{
-		Ok: true,
+		Results: []*pb.CreateDemoReply_Article{
+			{
+				Id:      req.Id,
+				Comment: req.Title,
+				Content: req.Content,
+			}},
 	}, nil
 }
 func (s *DemoService) UpdateDemo(ctx context.Context, req *pb.UpdateDemoRequest) (*pb.UpdateDemoReply, error) {
 	_, err := s.ac.UpdateArticle(ctx, biz.Article{
 		ID:      req.Id,
-		Comment: req.Comment,
+		Title:   req.Comment,
 		Content: req.Content,
 	})
 	if err != nil {
-		return &pb.UpdateDemoReply{
-			Ok: false,
-		}, err
+		return nil, err
 	}
 	return &pb.UpdateDemoReply{
-		Ok: true,
+		Results: []*pb.UpdateDemoReply_Article{
+			{
+				Id:      req.Id,
+				Comment: req.Comment,
+				Content: req.Content,
+			}},
 	}, nil
 }
 func (s *DemoService) DeleteDemo(ctx context.Context, req *pb.DeleteDemoRequest) (*pb.DeleteDemoReply, error) {
@@ -56,23 +63,29 @@ func (s *DemoService) DeleteDemo(ctx context.Context, req *pb.DeleteDemoRequest)
 		ID: req.Id,
 	})
 	if err != nil {
-		return &pb.DeleteDemoReply{
-			Ok: false,
-		}, err
+		return nil, err
 	}
 	return &pb.DeleteDemoReply{
-		Ok: true,
+		Results: []*pb.DeleteDemoReply_Article{
+			{
+				Id:      req.Id,
+				Comment: "null",
+				Content: "null",
+			}},
 	}, nil
 }
 func (s *DemoService) GetDemo(ctx context.Context, req *pb.GetDemoRequest) (*pb.GetDemoReply, error) {
 	_, err := s.ac.GetArticle(ctx, biz.Article{})
 	if err != nil {
-		return &pb.GetDemoReply{
-			Ok: false,
-		}, err
+		return nil, err
 	}
 	return &pb.GetDemoReply{
-		Ok: true,
+		Results: []*pb.GetDemoReply_Article{
+			{
+				Id:      -1,
+				Comment: "null",
+				Content: "null",
+			}},
 	}, nil
 }
 func (s *DemoService) ListDemo(ctx context.Context, req *pb.ListDemoRequest) (*pb.ListDemoReply, error) {
@@ -80,12 +93,15 @@ func (s *DemoService) ListDemo(ctx context.Context, req *pb.ListDemoRequest) (*p
 		ID: req.Id,
 	})
 	if err != nil {
-		return &pb.ListDemoReply{
-			Ok: false,
-		}, err
+		return nil, err
 	}
 	return &pb.ListDemoReply{
-		Ok: true,
+		Results: []*pb.ListDemoReply_Article{
+			{
+				Id:      req.Id,
+				Comment: "null",
+				Content: "null",
+			}},
 	}, nil
 }
 func (s *DemoService) SayHello(ctx context.Context, req *pb.HelloRequest) (*pb.HelloReply, error) {

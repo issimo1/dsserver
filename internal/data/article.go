@@ -24,7 +24,7 @@ func (u *articleRepo) CreateArticle(ctx context.Context, art *biz.Article) (*biz
 		Create().
 		SetID(art.ID).
 		SetContent(art.Content).
-		SetTitle(art.Comment).
+		SetTitle(art.Title).
 		Save(ctx)
 	if err != nil {
 		u.log.Errorf("create article %d error: %s", art.ID, err)
@@ -36,7 +36,7 @@ func (u *articleRepo) UpdateArticle(ctx context.Context, art *biz.Article) (*biz
 	err := u.data.db.Article.
 		UpdateOneID(art.ID).
 		SetUpdatedAt(time.Now()).
-		SetTitle(art.Comment).
+		SetTitle(art.Title).
 		SetContent(art.Content).
 		Exec(ctx)
 	if err != nil {
@@ -64,7 +64,7 @@ func (u *articleRepo) GetArticle(ctx context.Context) ([]*biz.Article, error) {
 	artcList = append(artcList, &biz.Article{
 		ID:      a.ID,
 		Content: a.Content,
-		Comment: a.Title,
+		Title:   a.Title,
 	})
 	return artcList, nil
 }
@@ -78,6 +78,6 @@ func (u *articleRepo) ListById(ctx context.Context, id int64) (*biz.Article, err
 	return &biz.Article{
 		ID:      art.ID,
 		Content: art.Content,
-		Comment: art.Title,
+		Title:   art.Title,
 	}, nil
 }

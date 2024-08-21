@@ -8,7 +8,7 @@ import (
 type Article struct {
 	ID      int64
 	Content string
-	Comment string
+	Title   string
 }
 
 type ArticleRepo interface {
