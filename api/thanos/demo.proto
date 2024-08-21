@@ -12,13 +12,13 @@ service Demo {
 	rpc CreateDemo (CreateDemoRequest) returns (CreateDemoReply){
 		option (google.api.http) = {
 			post: "/v1/create/{id}"
-			body: "*",
+			body: "*"
 		};
 	};
 	rpc UpdateDemo (UpdateDemoRequest) returns (UpdateDemoReply){
 		option (google.api.http) = {
 			post: "/v1/update/{id}"
-			body: "*";
+			body: "*"
 		};
 	};
 	rpc DeleteDemo (DeleteDemoRequest) returns (DeleteDemoReply){
