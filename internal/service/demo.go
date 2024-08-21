@@ -64,7 +64,7 @@ func (s *DemoService) DeleteDemo(ctx context.Context, req *pb.DeleteDemoRequest)
 	}, nil
 }
 func (s *DemoService) GetDemo(ctx context.Context, req *pb.GetDemoRequest) (*pb.GetDemoReply, error) {
-	_, err := s.ac.CreateArticle(ctx, biz.Article{})
+	_, err := s.ac.GetArticle(ctx, biz.Article{})
 	if err != nil {
 		return &pb.GetDemoReply{
 			Ok: false,
@@ -75,7 +75,7 @@ func (s *DemoService) GetDemo(ctx context.Context, req *pb.GetDemoRequest) (*pb.
 	}, nil
 }
 func (s *DemoService) ListDemo(ctx context.Context, req *pb.ListDemoRequest) (*pb.ListDemoReply, error) {
-	_, err := s.ac.CreateArticle(ctx, biz.Article{
+	_, err := s.ac.ListArticleById(ctx, biz.Article{
 		ID: req.Id,
 	})
 	if err != nil {
