@@ -9,11 +9,33 @@ option java_multiple_files = true;
 option java_package = "api.thanos";
 
 service Demo {
-	rpc CreateDemo (CreateDemoRequest) returns (CreateDemoReply);
-	rpc UpdateDemo (UpdateDemoRequest) returns (UpdateDemoReply);
-	rpc DeleteDemo (DeleteDemoRequest) returns (DeleteDemoReply);
-	rpc GetDemo (GetDemoRequest) returns (GetDemoReply);
-	rpc ListDemo (ListDemoRequest) returns (ListDemoReply);
+	rpc CreateDemo (CreateDemoRequest) returns (CreateDemoReply){
+		option (google.api.http) = {
+			post: "/v1/create/{id}"
+			body: "*",
+		};
+	};
+	rpc UpdateDemo (UpdateDemoRequest) returns (UpdateDemoReply){
+		option (google.api.http) = {
+			post: "/v1/update/{id}"
+			body: "*";
+		};
+	};
+	rpc DeleteDemo (DeleteDemoRequest) returns (DeleteDemoReply){
+		option (google.api.http) = {
+			post: "/v1/delete/{id}"
+		};
+	};
+	rpc GetDemo (GetDemoRequest) returns (GetDemoReply){
+		option (google.api.http) = {
+			get: "/v1/get"
+		};
+	};
+	rpc ListDemo (ListDemoRequest) returns (ListDemoReply){
+		option (google.api.http) = {
+			get: "/v1/list/{id}"
+		};
+	};
 	rpc SayHello (HelloRequest) returns (HelloReply) {
 	  option (google.api.http) = {
 	    get: "/thanos/{name}"
@@ -30,17 +52,40 @@ message HelloReply {
 }
 
 
-message CreateDemoRequest {}
-message CreateDemoReply {}
+message CreateDemoRequest {
+	int64 id = 1;
+	string content = 2;
+	string comment = 3;
+}
+message CreateDemoReply {
+	bool ok = 1;
+}
 
-message UpdateDemoRequest {}
-message UpdateDemoReply {}
+message UpdateDemoRequest {
+	int64 id = 1;
+	string content = 2;
+	string comment = 3;
+}
+message UpdateDemoReply {
+	bool ok = 1;
+}
 
-message DeleteDemoRequest {}
-message DeleteDemoReply {}
+message DeleteDemoRequest {
+	int64 id = 1;
+}
+message DeleteDemoReply {
+	bool ok = 1;
+}
 
-message GetDemoRequest {}
-message GetDemoReply {}
+message GetDemoRequest {
+}
+message GetDemoReply {
+	bool ok = 1;
+}
 
-message ListDemoRequest {}
-message ListDemoReply {}
+message ListDemoRequest {
+	int64 id = 1;
+}
+message ListDemoReply {
+	bool ok = 1;
+}
