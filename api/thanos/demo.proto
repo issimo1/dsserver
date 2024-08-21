@@ -24,6 +24,7 @@ service Demo {
 	rpc DeleteDemo (DeleteDemoRequest) returns (DeleteDemoReply){
 		option (google.api.http) = {
 			post: "/v1/delete/{id}"
+			body: "*"
 		};
 	};
 	rpc GetDemo (GetDemoRequest) returns (GetDemoReply){

@@ -71,6 +71,12 @@ paths:
                   required: true
                   schema:
                     type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/DeleteDemoRequest'
+                required: true
             responses:
                 "200":
                     description: OK
@@ -177,6 +183,11 @@ components:
             properties:
                 ok:
                     type: boolean
+        DeleteDemoRequest:
+            type: object
+            properties:
+                id:
+                    type: string
         GetDemoReply:
             type: object
             properties:

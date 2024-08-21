@@ -98,6 +98,9 @@ func _Demo_UpdateDemo0_HTTP_Handler(srv DemoHTTPServer) func(ctx http.Context) e
 func _Demo_DeleteDemo0_HTTP_Handler(srv DemoHTTPServer) func(ctx http.Context) error {
 	return func(ctx http.Context) error {
 		var in DeleteDemoRequest
+		if err := ctx.Bind(&in); err != nil {
+			return err
+		}
 		if err := ctx.BindQuery(&in); err != nil {
 			return err
 		}
@@ -213,10 +216,10 @@ func (c *DemoHTTPClientImpl) CreateDemo(ctx context.Context, in *CreateDemoReque
 func (c *DemoHTTPClientImpl) DeleteDemo(ctx context.Context, in *DeleteDemoRequest, opts ...http.CallOption) (*DeleteDemoReply, error) {
 	var out DeleteDemoReply
 	pattern := "/v1/delete/{id}"
-	path := binding.EncodeURL(pattern, in, true)
+	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationDemoDeleteDemo))
 	opts = append(opts, http.PathTemplate(pattern))
-	err := c.cc.Invoke(ctx, "POST", path, nil, &out, opts...)
+	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
 	if err != nil {
 		return nil, err
 	}
