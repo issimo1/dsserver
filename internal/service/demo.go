@@ -75,21 +75,21 @@ func (s *DemoService) DeleteDemo(ctx context.Context, req *pb.DeleteDemoRequest)
 	}, nil
 }
 func (s *DemoService) GetDemo(ctx context.Context, req *pb.GetDemoRequest) (*pb.GetDemoReply, error) {
-	_, err := s.ac.GetArticle(ctx, biz.Article{})
+	getArtc, err := s.ac.GetArticle(ctx, biz.Article{})
 	if err != nil {
 		return nil, err
 	}
 	return &pb.GetDemoReply{
 		Results: []*pb.GetDemoReply_Article{
 			{
-				Id:      -1,
-				Comment: "null",
-				Content: "null",
+				Id:      getArtc[0].ID,
+				Comment: getArtc[0].Title,
+				Content: getArtc[0].Content,
 			}},
 	}, nil
 }
 func (s *DemoService) ListDemo(ctx context.Context, req *pb.ListDemoRequest) (*pb.ListDemoReply, error) {
-	_, err := s.ac.ListArticleById(ctx, biz.Article{
+	getArti, err := s.ac.ListArticleById(ctx, biz.Article{
 		ID: req.Id,
 	})
 	if err != nil {
@@ -98,9 +98,9 @@ func (s *DemoService) ListDemo(ctx context.Context, req *pb.ListDemoRequest) (*p
 	return &pb.ListDemoReply{
 		Results: []*pb.ListDemoReply_Article{
 			{
-				Id:      req.Id,
-				Comment: "null",
-				Content: "null",
+				Id:      getArti.ID,
+				Comment: getArti.Title,
+				Content: getArti.Content,
 			}},
 	}, nil
 }
