@@ -10,6 +10,7 @@ import (
 type DemoService struct {
 	pb.UnimplementedDemoServer
 
+	ac *biz.ArticleUseCase
 	uc *biz.GreeterUsecase
 }
 
@@ -20,19 +21,71 @@ func NewDemoService(uc *biz.GreeterUsecase) *DemoService {
 }
 
 func (s *DemoService) CreateDemo(ctx context.Context, req *pb.CreateDemoRequest) (*pb.CreateDemoReply, error) {
-	return &pb.CreateDemoReply{}, nil
+	_, err := s.ac.CreateArticle(ctx, biz.Article{
+		ID:      req.Id,
+		Comment: req.Comment,
+		Content: req.Content,
+	})
+	if err != nil {
+		return &pb.CreateDemoReply{
+			Ok: false,
+		}, err
+	}
+	return &pb.CreateDemoReply{
+		Ok: true,
+	}, nil
 }
 func (s *DemoService) UpdateDemo(ctx context.Context, req *pb.UpdateDemoRequest) (*pb.UpdateDemoReply, error) {
-	return &pb.UpdateDemoReply{}, nil
+	_, err := s.ac.UpdateArticle(ctx, biz.Article{
+		ID:      req.Id,
+		Comment: req.Comment,
+		Content: req.Content,
+	})
+	if err != nil {
+		return &pb.UpdateDemoReply{
+			Ok: false,
+		}, err
+	}
+	return &pb.UpdateDemoReply{
+		Ok: true,
+	}, nil
 }
 func (s *DemoService) DeleteDemo(ctx context.Context, req *pb.DeleteDemoRequest) (*pb.DeleteDemoReply, error) {
-	return &pb.DeleteDemoReply{}, nil
+	_, err := s.ac.DeleteArticle(ctx, biz.Article{
+		ID: req.Id,
+	})
+	if err != nil {
+		return &pb.DeleteDemoReply{
+			Ok: false,
+		}, err
+	}
+	return &pb.DeleteDemoReply{
+		Ok: true,
+	}, nil
 }
 func (s *DemoService) GetDemo(ctx context.Context, req *pb.GetDemoRequest) (*pb.GetDemoReply, error) {
-	return &pb.GetDemoReply{}, nil
+	_, err := s.ac.CreateArticle(ctx, biz.Article{})
+	if err != nil {
+		return &pb.GetDemoReply{
+			Ok: false,
+		}, err
+	}
+	return &pb.GetDemoReply{
+		Ok: true,
+	}, nil
 }
 func (s *DemoService) ListDemo(ctx context.Context, req *pb.ListDemoRequest) (*pb.ListDemoReply, error) {
-	return &pb.ListDemoReply{}, nil
+	_, err := s.ac.CreateArticle(ctx, biz.Article{
+		ID: req.Id,
+	})
+	if err != nil {
+		return &pb.ListDemoReply{
+			Ok: false,
+		}, err
+	}
+	return &pb.ListDemoReply{
+		Ok: true,
+	}, nil
 }
 func (s *DemoService) SayHello(ctx context.Context, req *pb.HelloRequest) (*pb.HelloReply, error) {
 	g, err := s.uc.CreateGreeter(ctx, &biz.Greeter{Hello: req.Name})

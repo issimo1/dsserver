@@ -3,10 +3,11 @@ package data
 import (
 	"context"
 	"fmt"
-	"github.com/go-redis/redis/v8"
+
 	"github.com/issimo1/dsserver/internal/biz"
 
 	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-redis/redis/v8"
 )
 
 type greeterRepo struct {
