@@ -6,7 +6,7 @@ info:
     title: Demo API
     version: 0.0.1
 paths:
-    /demo/{name}:
+    /thanos/{name}:
         get:
             tags:
                 - Demo
@@ -30,8 +30,169 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
+    /v1/create/{id}:
+        post:
+            tags:
+                - Demo
+            operationId: Demo_CreateDemo
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/CreateDemoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CreateDemoReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /v1/delete/{id}:
+        post:
+            tags:
+                - Demo
+            operationId: Demo_DeleteDemo
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/DeleteDemoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DeleteDemoReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /v1/get:
+        get:
+            tags:
+                - Demo
+            operationId: Demo_GetDemo
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetDemoReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /v1/list/{id}:
+        get:
+            tags:
+                - Demo
+            operationId: Demo_ListDemo
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ListDemoReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /v1/update/{id}:
+        post:
+            tags:
+                - Demo
+            operationId: Demo_UpdateDemo
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UpdateDemoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UpdateDemoReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
 components:
     schemas:
+        CreateDemoReply:
+            type: object
+            properties:
+                ok:
+                    type: boolean
+        CreateDemoRequest:
+            type: object
+            properties:
+                id:
+                    type: string
+                content:
+                    type: string
+                comment:
+                    type: string
+        DeleteDemoReply:
+            type: object
+            properties:
+                ok:
+                    type: boolean
+        DeleteDemoRequest:
+            type: object
+            properties:
+                id:
+                    type: string
+        GetDemoReply:
+            type: object
+            properties:
+                ok:
+                    type: boolean
         GoogleProtobufAny:
             type: object
             properties:
@@ -45,6 +206,11 @@ components:
             properties:
                 message:
                     type: string
+        ListDemoReply:
+            type: object
+            properties:
+                ok:
+                    type: boolean
         Status:
             type: object
             properties:
@@ -61,5 +227,19 @@ components:
                         $ref: '#/components/schemas/GoogleProtobufAny'
                     description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
             description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+        UpdateDemoReply:
+            type: object
+            properties:
+                ok:
+                    type: boolean
+        UpdateDemoRequest:
+            type: object
+            properties:
+                id:
+                    type: string
+                content:
+                    type: string
+                comment:
+                    type: string
 tags:
     - name: Demo
