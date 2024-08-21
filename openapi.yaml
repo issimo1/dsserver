@@ -167,8 +167,19 @@ components:
         CreateDemoReply:
             type: object
             properties:
-                ok:
-                    type: boolean
+                results:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CreateDemoReply_Article'
+        CreateDemoReply_Article:
+            type: object
+            properties:
+                id:
+                    type: string
+                content:
+                    type: string
+                comment:
+                    type: string
         CreateDemoRequest:
             type: object
             properties:
@@ -178,11 +189,28 @@ components:
                     type: string
                 comment:
                     type: string
+                title:
+                    type: string
+                name:
+                    type: string
+                commContent:
+                    type: string
         DeleteDemoReply:
             type: object
             properties:
-                ok:
-                    type: boolean
+                results:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/DeleteDemoReply_Article'
+        DeleteDemoReply_Article:
+            type: object
+            properties:
+                id:
+                    type: string
+                content:
+                    type: string
+                comment:
+                    type: string
         DeleteDemoRequest:
             type: object
             properties:
@@ -191,8 +219,19 @@ components:
         GetDemoReply:
             type: object
             properties:
-                ok:
-                    type: boolean
+                results:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/GetDemoReply_Article'
+        GetDemoReply_Article:
+            type: object
+            properties:
+                id:
+                    type: string
+                content:
+                    type: string
+                comment:
+                    type: string
         GoogleProtobufAny:
             type: object
             properties:
@@ -209,8 +248,19 @@ components:
         ListDemoReply:
             type: object
             properties:
-                ok:
-                    type: boolean
+                results:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ListDemoReply_Article'
+        ListDemoReply_Article:
+            type: object
+            properties:
+                id:
+                    type: string
+                content:
+                    type: string
+                comment:
+                    type: string
         Status:
             type: object
             properties:
@@ -230,8 +280,19 @@ components:
         UpdateDemoReply:
             type: object
             properties:
-                ok:
-                    type: boolean
+                results:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UpdateDemoReply_Article'
+        UpdateDemoReply_Article:
+            type: object
+            properties:
+                id:
+                    type: string
+                content:
+                    type: string
+                comment:
+                    type: string
         UpdateDemoRequest:
             type: object
             properties:
