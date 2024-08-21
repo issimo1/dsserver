@@ -81,12 +81,19 @@ message DeleteDemoReply {
 message GetDemoRequest {
 }
 message GetDemoReply {
-	bool ok = 1;
+	message Article{
+		int64 id = 1;
+		string content = 2;
+		string comment = 3;
+	}
+	repeated Article results = 1;
 }
 
 message ListDemoRequest {
 	int64 id = 1;
 }
 message ListDemoReply {
-	bool ok = 1;
+	int64 id = 1;
+	string content = 2;
+	string comment = 3;
 }
